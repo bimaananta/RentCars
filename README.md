@@ -2,10 +2,6 @@
 
 RentCars adalah sebuah website yang dibuat sebagai penunjang fasilitas pelayanan dari perusahaan atau organisasi rental perorangan maupun korporasi. Sistem yang dibuat dalam website ini dibuat dengan sederhana dan mengutamakan user experience secara menyeluruh baik dari tampilan UI maupun logika bisnis yang berjalan.
 
-## Status Proyek
-
-Tulis status proyek, misalnya: Pengembangan, Selesai, atau Pemeliharaan.
-
 ## Tech Stack
 
 Aplikasi berbasis website RentCars dibuat menggunakan React + Vite, TailwindCSS, dan Rest API Laravel sebagai alat komunikasi ke dalam database.
