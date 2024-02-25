@@ -16,10 +16,6 @@ Aplikasi berbasis website RentCars dibuat menggunakan React + Vite, TailwindCSS,
 - Melakukan dan menambah rental baru
 - Fitur Berita
 
-## Demo
-
-Tambahkan tautan demo atau tangkapan layar proyek Anda di sini.
-
 ## Gambar Proyek
 
 ![Tampilan Home Page](https://i.ibb.co/bNsZzhf/Screenshot-11.png)
