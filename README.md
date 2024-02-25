@@ -1,6 +1,6 @@
 # RentCars Website
 
-RentCars adalah sebuah website yang dibuat sebagai penunjang fasilitas pelayanan dari perusahaan atau organisasi rental perorangan maupun korporasi. Sistem yang dibuat dalam website ini dibuat dengan sederhana dan mengutamakan user experince secara menyeluruh baik dari tampilan UI maupun logika bisnis yang berjalan.
+RentCars adalah sebuah website yang dibuat sebagai penunjang fasilitas pelayanan dari perusahaan atau organisasi rental perorangan maupun korporasi. Sistem yang dibuat dalam website ini dibuat dengan sederhana dan mengutamakan user experience secara menyeluruh baik dari tampilan UI maupun logika bisnis yang berjalan.
 
 ## Status Proyek
 
