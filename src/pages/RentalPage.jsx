@@ -6,6 +6,7 @@ import AuthContext from '../AuthContext';
 
 export default function RentalPage(){
     const [rentalData, setRentalData] = useState([]);
+    const [userID, setUserID] = useState(0);
     const isLoggedIn = useContext(AuthContext);
     const navigate = useNavigate()
 
@@ -18,7 +19,25 @@ export default function RentalPage(){
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await api.get('rental');
+                const response = await api.get('/profile', {
+                    headers:{
+                        "Authorization": `Bearer ${localStorage["token"]}`,
+                        "Content-Type": "application/json"
+                    }
+                });
+                setUserID(response.data.id);
+            }catch(error){
+                console.log("Error fetching user profile: ", error.message);
+            }
+        }
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const response = await api.get(`/rental/user/${userID}`);
                 setRentalData(response.data.data);
             }catch(error){
                 console.log("Error fetching data: ", error.message);
@@ -26,7 +45,7 @@ export default function RentalPage(){
         }
 
         fetchData();
-    }, []);
+    }, [userID]);
 
     function capitalize(word){
         let capital = word[0].toUpperCase();
@@ -76,7 +95,7 @@ export default function RentalPage(){
                                 <th>Status</th>
                             </thead>
                             <tbody>
-                                {rentalData.map((rental, index) => (
+                                {(rentalData.length !== 0) ? rentalData.map((rental, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{rental.rental_date}</td>
@@ -86,9 +105,10 @@ export default function RentalPage(){
                                         <td>{rental.cars.title}</td>
                                         <td><div className={`${(isReturned(rental.return_date) === "Returned") ? "p-2 bg-green-500 text-white text-sm text-center rounded-full" : "p-2 bg-blue-500 text-white text-sm text-center rounded-full"}`}>{isReturned(rental.return_date)}</div></td>
                                     </tr>
-                                ))}
+                                )) : (<></>)}
                             </tbody>
                         </table>
+                        {(rentalData.length === 0) ? (<p className="mt-5 text-center text-2xl font-normal mx-auto">Rental Not Found</p>) : (<></>)}
                     </div>
                 </div>
             </section>
