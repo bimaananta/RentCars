@@ -20,7 +20,7 @@ Aplikasi berbasis website RentCars dibuat menggunakan React + Vite, TailwindCSS,
 
 ## Mulai
 
-Petunjuk untuk menginstal dan menjalankan proyek di mesin lokal. Pastikan untuk menyertakan semua dependensi yang diperlukan.
+Petunjuk untuk menginstal dan menjalankan proyek di mesin lokal.
 
 ```bash
 # Instal dependensi
