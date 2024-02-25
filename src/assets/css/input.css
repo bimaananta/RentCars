@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    @apply opacity-100;
+}
+.btn{
+    @apply bg-none relative overflow-hidden transition-all ease-in-out;
+}
+.btn::before{
+    @apply content-[""] w-0 h-full absolute top-0 left-0 -z-10 bg-slate-900 transition-all;
+}
+.btn:hover::before{
+    @apply w-full;
+}
+.btn:hover{
+    @apply text-white;
+}
+.loader{
+    @apply border-b-yellow-500 block scale-150;
+}
+@media screen and (max-width: 768px){
+
+}
+table{
+    @apply bg-white overflow-hidden rounded-md shadow-md w-full text-left;
+}
+
+table thead{
+    @apply bg-black;
+}
+
+table thead th{
+    @apply text-white;
+}
+
+table th, td{
+    @apply p-3;
+}
+table tbody tr:nth-child(even){
+    @apply bg-slate-100;
+}
