@@ -70,7 +70,7 @@ export default function RentalPage(){
             <Navbar active={"rental"} isSticky={true}/>
             <section id="rental" className="pt-11 mt-11">
                 <div className="container mt-5 w-full h-screen px-5 flex flex-col">
-                    <div className="w-full header flex flex-row justify-between flex-wrap items-center px-10 gap-3 md-gap-0">
+                    <div className="w-full header flex flex-row justify-between flex-wrap items-center px-0 lg:px-10 gap-3 md-gap-0">
                         <div className="title flex-1 min-w-fit">
                             <h1 className="text-3xl font-bold mb-1">Rental List</h1>
                             <p className="text-slate-600">The list of history rental you did</p>
@@ -83,8 +83,8 @@ export default function RentalPage(){
                             <button className="w-[40px] h-[40px] rounded-md bg-blue-600 text-white transition-all hover:opacity-90"><i className="bi bi-search" onClick={(e) => handleSearch(e)}></i></button>
                         </div>
                     </div>
-                    <div className="main w-full h-fit p-10">
-                        <table>
+                    <div className="main w-full h-fit p-0 pt-5 lg:pt-10 lg:px-10">
+                        <table className="table-fixed">
                             <thead>
                                 <th>ID</th>
                                 <th>Rental Date</th>
@@ -108,7 +108,13 @@ export default function RentalPage(){
                                 )) : (<></>)}
                             </tbody>
                         </table>
-                        {(rentalData.length === 0) ? (<p className="mt-5 text-center text-2xl font-normal mx-auto">Rental Not Found</p>) : (<></>)}
+                        {(rentalData.length === 0) ? (
+                            <>
+                                <div className="mt-3 w-full h-[30px] rounded-md bg-gray-300 animate-pulse"></div>
+                                <div className="mt-3 w-full h-[30px] rounded-md bg-gray-300 animate-pulse"></div>
+                                <div className="mt-3 w-full h-[30px] rounded-md bg-gray-300 animate-pulse"></div>
+                            </>
+                        ) : (<></>)}
                     </div>
                 </div>
             </section>

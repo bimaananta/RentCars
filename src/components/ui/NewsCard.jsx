@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function NewsCard({newsData}){
     return (
         <div className="card bg-white w-full h-fit flex flex-col shadow-md rounded-md">
@@ -8,7 +10,7 @@ export default function NewsCard({newsData}){
                 <h1 className="text-2xl font-semibold mb-2">{newsData.title}</h1>
                 <p className="text-slate-600">{newsData.description}</p>
                 <div className="action w-full flex mt-3">
-                    <button className="w-full p-2 text-sm bg-yellow-500 text-white rounded-full">See More</button>
+                    <Link to={`/news/${newsData.id_news}`} className="w-full p-2 text-sm flex justify-center transition-all hover:-translate-y-1 bg-yellow-500 text-white rounded-full">See More</Link>
                 </div>
             </div>
         </div>

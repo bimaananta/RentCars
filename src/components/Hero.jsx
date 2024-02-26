@@ -7,7 +7,7 @@ export default function Hero(){
             <section id="home">
                 <div className="container w-full h-fit pt-11 md:pt-0 md:h-screen flex flex-row items-center px-5">
                     <div className="main w-full h-fit px-10 py-14 grid grid-cols-1 md:grid-cols-2 items-center justify-center">
-                        <div className="main-text">
+                        <div className="main-text" style={{animation: "showText .7s ease-in-out forwards"}}>
                             <p className='text-sm md:text-lg -mb-0 font-semibold text-slate-600'>Welcome To Rent Cars</p>
                             <h1 className="text-3xl md:text-[40px] text-slate-900 font-bold leading-tight">Rent Everything you need, <span className='text-yellow-400'>Fast</span> and <span className='text-yellow-400'>Simple</span></h1>
                             <p className="text-sm md:text-lg">We provides many tons of branded cars, like Super car, Sport Car, and any other stylized cars from around the world!</p>
@@ -16,7 +16,7 @@ export default function Hero(){
                                 <a href='#carTypes' className='btn px-3 py-2 relative text-base bg-transparent text-slate-900 border-2 border-slate-900 mt-3'>Learn More</a>
                             </div>
                         </div>
-                        <img src={img} className='flex-1 block rotate-3' />
+                        <img src={img} className='flex-1 block' style={{animation: "showPict .7s ease-in-out forwards"}} />
                     </div>
                 </div>
             </section>

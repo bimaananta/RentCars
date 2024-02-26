@@ -13,8 +13,6 @@ export default function Navbar({isSticky, active}){
         }
     }, [isLogIn]);
 
-    console.log(isLoggedIn);
-
     return (
         <header className={`w-full flex flex-row justify-between items-center px-14 py-4 transition-all duration-300 ease-out ${(isSticky) ? "bg-slate-900 shadow-md" : "bg-white"} w-full fixed top-0 z-50`}>
             <div className="logo flex flex-row gap-2 items-center">
@@ -22,7 +20,7 @@ export default function Navbar({isSticky, active}){
                 <h1 className={`text-xl md:text-2xl font-bold transition-all ${(isSticky) ? "text-white" : "text-slate-900"} font-['Poppins']`}>Rent<span className="text-yellow-400">Cars</span></h1>
             </div>
             <i className={`${(isNavbar) ? "bi bi-x" : "bi bi-list-nested"} transition-all cursor-pointer text-3xl ${(isSticky) ? "text-white" : ""} lg:hidden `} onClick={() => setIsNavbar(!isNavbar)}></i>
-            <ul className={`absolute lg:flex lg:bg-transparent lg:static top-16 -z-50 ${(isNavbar) ? "opacity-100 flex translate-y-0" : "opacity-0 lg:opacity-100"} left-0 gap-5 lg:gap-0 p-5 lg:p-0 ${(isSticky) ? "bg-slate-900" : "bg-white"} w-full lg:w-[80%] flex-col lg:flex-row justify-around items-center transition-all ${(isSticky) ? "text-white" : "text-slate-900"}`}>
+            <ul className={`absolute lg:flex lg:bg-transparent lg:static top-16 -z-50 ${(isNavbar) ? "opacity-100 flex translate-y-0" : "hidden lg:opacity-100"} left-0 gap-5 lg:gap-0 p-5 lg:p-0 ${(isSticky) ? "bg-slate-900" : "bg-white"} w-full lg:w-[80%] flex-col lg:flex-row justify-around items-center transition-all ${(isSticky) ? "text-white" : "text-slate-900"}`}>
                 <li className="nav-item">
                     <Link to={'/'} className={`opacity-60 transition-all hover:opacity-90 ${(active === "home") ? "active" : ""}`}>Home</Link>
                 </li>

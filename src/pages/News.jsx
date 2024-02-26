@@ -34,7 +34,7 @@ export default function News(){
                         <div className="search flex-1 flex flex-row gap-2">
                             <div className="search-bar flex flex-row gap-3 flex-1 border border-gray-300 rounded-md px-3 py-2">
                                 <i className="bi bi-search"></i>
-                                <input type="text" name="search" id="search" placeholder="Enter Search" className="outline-none border-none" onChange={(e) => setSearch(e.target.value)} />
+                                <input type="text" name="search" id="search" placeholder="Enter Search" className="w-full outline-none border-none" onChange={(e) => setSearch(e.target.value)} />
                             </div>
                             <button className="w-[40px] h-[40px] rounded-md bg-blue-600 text-white transition-all hover:opacity-90"><i className="bi bi-search" onClick={(e) => handleSearch(e)}></i></button>
                         </div>

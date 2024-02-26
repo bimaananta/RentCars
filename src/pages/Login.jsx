@@ -68,7 +68,7 @@ export default function Login(){
     return (
         <>
             <Navbar isSticky={isSticky}/>
-            <div className="container pt-28 md:pt-11 w-full h-fit md:h-screen flex flex-row justify-center items-center">
+            <div className="container pt-28 md:pt-11 w-full h-fit md:h-screen flex flex-row justify-center items-center mb-5">
                 <div className="login-card bg-white w-[80%] md:w-[700px] h-fit grid grid-cols-1 md:grid-cols-2 rounded-md shadow-md overflow-hidden">
                     <form className="p-5 flex flex-col justify-between" onSubmit={(e) => handleSubmit(e)} >
                         <div className="header">

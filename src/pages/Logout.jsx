@@ -46,6 +46,7 @@ export default function Logout(){
                 }).then((result) => {
                     if(result.isConfirmed){
                         navigate('/');
+                        window.location.reload();
                     }
                 });
             }

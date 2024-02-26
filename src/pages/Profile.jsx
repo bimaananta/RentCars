@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import api from "../api";
 import Navbar from "../components/Navbar";
 import AuthContext from "../AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Profile(){    
     const [userData, setUserData] = useState({});
@@ -84,10 +84,10 @@ export default function Profile(){
                             </div>
                         </div>
                         <div className="action grid grid-cols-1 md:grid-cols-2 gap-2 md:col-span-2">
-                            <button className="px-2 py-2 text-white rounded-md bg-yellow-500 flex gap-2 items-center transition-all hover:opacity-90 ">
+                            <Link to={'/update-profile'} className="px-2 py-2 text-white rounded-md bg-yellow-500 flex gap-2 items-center transition-all hover:opacity-90 ">
                                 <i className="bi bi-pencil-square"></i>
                                 Edit Profile
-                            </button>
+                            </Link>
                             <button className="px-3 py-2 text-white rounded-md bg-red-600 flex gap-2 items-center transition-all hover:opacity-90">
                                 <i className="bi bi-trash"></i>
                                 Delete Profile

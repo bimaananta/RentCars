@@ -14,6 +14,7 @@ export default function CarsList(){
             const response = await api.get(`cars/search/${search}`);
             setCarsData(response.data.data);
         }catch(error){
+            setCarsData([]);
             console.log("Error fetching search data: ", error.message);
         }
     }
@@ -49,14 +50,14 @@ export default function CarsList(){
                                 <i className="bi bi-search"></i>
                                 <input type="text" name="search" id="search" placeholder="Enter Search" className="outline-none w-full h-fit" onChange={(e) => setSearch(e.target.value)} />
                             </div>
-                            <button className="w-[40px] h-[40px] rounded-md bg-blue-600 text-white transition-all hover:opacity-90"><i className="bi bi-search" onClick={(e) => handleSearch(e)}></i></button>
+                            <button className="w-[40px] h-[40px] rounded-md bg-blue-600 text-white transition-all hover:opacity-90" onClick={(e) => handleSearch(e)}><i className="bi bi-search"></i></button>
                         </div>
                     </div>
                     <div className={`w-full main p-10 grid ${(carsData.length === 0) ? "grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"} gap-4`}>
-                        {(carsData.length !== 0) ? carsData.map((car, index) => (
+                        {(carsData && carsData.length !== 0) ? carsData.map((car, index) => (
                             <CarCard carData={car} key={index} />
                         )) : (
-                            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 border">
+                            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                                 <div className="flex-1 h-[200px] rounded-md bg-slate-300 animate-pulse"></div>
                                 <div className="flex-1 h-[200px] rounded-md bg-slate-300 animate-pulse"></div>
                                 <div className="flex-1 h-[200px] rounded-md bg-slate-300 animate-pulse"></div>

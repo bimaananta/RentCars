@@ -24,7 +24,7 @@
 
 }
 table{
-    @apply bg-white overflow-hidden rounded-md shadow-md w-full text-left;
+    @apply bg-white overflow-hidden rounded-md shadow-md w-full text-left text-sm lg:text-base;
 }
 
 table thead{

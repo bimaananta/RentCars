@@ -8,15 +8,14 @@ import Swal from 'sweetalert2';
 export default function RentPage(){
     const params = useParams();
     const [carData, setCarData] = useState({});
-    const [userData, setUserData] = useState({});
     const [isHovered, setIsHovered] = useState({
         btn1: false,
         btn2: false
     });
     const [displaySecondImage, setDisplaySecondImage] = useState(false);
     const [data, setData] = useState({
-        rental_date: "",
-        return_date: "",
+        rental_date: null,
+        return_date: null,
         user_id: 0,
         car_id: params.id,
         price: 0,
@@ -58,48 +57,40 @@ export default function RentPage(){
         }
 
         fetchData();
-    }, [data]);
+    }, []);
 
-    console.log(carData);
-
-    function calculatePrice(e, rentalDate, returnDate, originalPrice){
+    function calculatePrice(e){
         e.preventDefault();
 
         if(!isLoggedIn){
             navigate('/login');
-            return;
+            return false;
         }
 
-        let differ = new Date(returnDate) - new Date(rentalDate);
-        let price = (differ / 1000 / 60 / 60 / 24) * originalPrice;
-        setPrice(price)
+        if(data.rental_date === "" || data.return_date === ""){
+            alert("Please fill all the date data!");
+            return false;
+        }
 
-        Swal.fire({
-            title: "Confirm Rental Create ?",
-            text: "Your rental will be processed after this confirmation",
-            icon: "warning",
-            showCancelButton: true,
-            showConfirmButton: true,
-            cancelButtonColor: "#ff0000",
-            confirmButtonColor: "#006FB9"
-        }).then((result) => {
-            if(result.isConfirmed){
-                createRental(price);
-            }
-        });
-
+        let differ = new Date(data.return_date) - new Date(data.rental_date);
+        let price = (differ / 1000 / 60 / 60 / 24) * carData.price;
+        setPrice(price);
     }
+
+    console.log(data);
     
-    async function createRental(price){
+    async function createRental(e){
+        e.preventDefault();
+
         const formData = new FormData();
 
         formData.append('rental_date', data.rental_date);
         formData.append('return_date', data.return_date);
-        formData.append('user_id', data.user_id);
-        formData.append('car_id', carData.id);
         formData.append('price', price);
+        formData.append('user_id', data.user_id);
+        formData.append('car_id', data.car_id);
 
-        console.log(userData.id);
+        console.log(formData);
 
         await api
             .post('rental', formData)
@@ -133,7 +124,7 @@ export default function RentPage(){
     return (
         <>
             <Navbar/>
-            <div className="container pt-20 md:pt-11 w-full h-fit md:h-screen flex justify-center items-center">
+            <div className="container pt-20 md:pt-11 w-full h-fit md:h-screen flex justify-center items-center mb-5 lg:mb-0">
                 <div className="main w-[90%] md:w-[800px] h-fit grid grid-cols-1 md:grid-cols-2 bg-white rounded-md shadow-md overflow-hidden">
                     <div className="wrapper overflow-hidden relative">
                         <div className="absolute w-full h-full flex items-center justify-between z-40">
@@ -159,7 +150,10 @@ export default function RentPage(){
                                 <p className='text-base font-normal'>Total :</p>
                                 <h1 className='text-3xl font-semibold'>${price}</h1>
                             </div>
-                            <button onClick={(e) => calculatePrice(e, data.rental_date, data.return_date, carData.price)} className="px-2 py-1 w-full text-white rounded-full bg-yellow-500 transition-all block hover:-translate-y-1">Rent Now</button>
+                            <div className="action flex flex-row gap-2">
+                                <button onClick={(e) => calculatePrice(e)} className='px-2 py-2 text-white text-center bg-blue-600 rounded-full w-full'>Calculate Price</button>
+                                <button onClick={(e) => createRental(e)} className="px-2 py-2 w-full text-white rounded-full bg-yellow-500 transition-all block hover:-translate-y-1">Rent Now</button>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ function AuthProvider({children}){
             setIsLoggedIn(false);
         }
     }, [token]);
-
+  
     return (
         <AuthContext.Provider value={isLoggedIn} >
             {children}
