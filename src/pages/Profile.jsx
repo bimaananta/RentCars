@@ -3,6 +3,7 @@ import api from "../api";
 import Navbar from "../components/Navbar";
 import AuthContext from "../AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Profile(){    
     const [userData, setUserData] = useState({});
@@ -34,6 +35,43 @@ export default function Profile(){
 
         fetchData();
     }, []);
+
+    const deleteAccount = async () => {
+        try{
+            const response = await api.get('delete-account', {
+                headers:{
+                    "Authorization": `Bearer ${localStorage["token"]}`
+                }
+            });
+
+            if(response.data.status === "success"){
+                localStorage.removeItem("token");
+                Swal.fire({
+                    title: "Successfully delete account",
+                    text: "Successfully delete account",
+                    icon: "success",
+                    showConfirmButton: true,
+                    showCancelButton: false,
+                    confirmButtonColor: "#006FB9",
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        navigate('/');
+                        window.location.reload();
+                    }
+                });
+            }
+        }catch(error){
+            console.log("Error while delete account: ", error.message);
+            Swal.fire({
+                title: "Delete account failed",
+                text: `Delete account failed ${error.message}`,
+                icon: "error",
+                showConfirmButton: false,
+                showCancelButton: true,
+                cancelButtonColor: "#006FB9",
+            });
+        }
+    }
 
     return (
         <>
@@ -88,9 +126,9 @@ export default function Profile(){
                                 <i className="bi bi-pencil-square"></i>
                                 Edit Profile
                             </Link>
-                            <button className="px-3 py-2 text-white rounded-md bg-red-600 flex gap-2 items-center transition-all hover:opacity-90">
+                            <button onClick={() => deleteAccount()} className="px-3 py-2 text-white rounded-md bg-red-600 flex gap-2 items-center transition-all hover:opacity-90">
                                 <i className="bi bi-trash"></i>
-                                Delete Profile
+                                Delete Account
                             </button>
                         </div>
                     </div>

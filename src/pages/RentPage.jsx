@@ -82,6 +82,10 @@ export default function RentPage(){
     async function createRental(e){
         e.preventDefault();
 
+        if(!isLoggedIn){
+            return navigate('/login');
+        }
+
         const formData = new FormData();
 
         formData.append('rental_date', data.rental_date);

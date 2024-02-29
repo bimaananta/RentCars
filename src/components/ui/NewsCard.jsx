@@ -1,18 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function NewsCard({newsData}){
+export default function NewsCard({newsData, category}){
     return (
-        <div className="card bg-white w-full h-fit flex flex-col shadow-md rounded-md">
-            <div className="wrapper h-[60%] overflow-hidden rounded-md">
-                <img src={`${(newsData.image !== null) ? (newsData.image.includes("https")) ? newsData.image : `http://localhost:8000/storage/${newsData.image}` : ""}`} className="" />
+        <Link to={`/news/detail/${newsData.id_news}`} className="card bg-white flex-1 h-[200px] flex flex-row items-center shadow-md rounded-md overflow-hidden relative transition-all cursor-pointer">
+            <img src={`${(newsData.image !== null) ? (newsData.image.includes("https")) ? newsData.image : `http://localhost:8000/storage/${newsData.image}` : ""}`} className="w-full h-full object-cover" />
+            <div className="bg-gradient-to-t from-black opacity-60 w-full h-full absolute top-0 left-0"></div>
+            <div className="absolute bottom-0 left-0 p-3 text-white block transition-all hover:-translate-y-2">
+                <p>{`News / ${category}`}</p>
+                <h1 className="text-xl font-semibold">{newsData.title}</h1>
+                <p className="text-sm">{newsData.description}</p>
             </div>
-            <div className="main-text p-5">
-                <h1 className="text-2xl font-semibold mb-2">{newsData.title}</h1>
-                <p className="text-slate-600">{newsData.description}</p>
-                <div className="action w-full flex mt-3">
-                    <Link to={`/news/${newsData.id_news}`} className="w-full p-2 text-sm flex justify-center transition-all hover:-translate-y-1 bg-yellow-500 text-white rounded-full">See More</Link>
-                </div>
-            </div>
-        </div>
+        </Link>
     );
 }

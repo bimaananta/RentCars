@@ -8,9 +8,9 @@ import Swal from "sweetalert2";
 export default function UpdateProfile(){
     const [userData, setUserData] = useState({});
     const [data, setData] = useState({
+        username: "",
         firstname: "",
         lastname: "",
-        username: "",
         email: "",
         telephone: ""
     });
@@ -30,7 +30,7 @@ export default function UpdateProfile(){
                         "Content-Type": "application/json"
                     }
                 });
-                setUserData(response.data.profile);
+                setData(response.data);
             }catch(error){
                 console.log("Error while get profile data: ", error.message);
             }
@@ -38,6 +38,8 @@ export default function UpdateProfile(){
 
         fetchData();
     }, []);
+
+    console.log(data);
 
     async function handeSubmit(e){
         e.preventDefault();
@@ -89,45 +91,49 @@ export default function UpdateProfile(){
         <>
             <Navbar isSticky={false} />
             <section id="updateProfile" className="pt-11 mt-11">
-                <div className="container w-full h-fit px-5 flex justify-center items-center mb-5">
-                    <div className="main w-[100%] md:w-[70%] h-fit bg-white rounded-md shadow-md grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-                        <div className="form-update flex flex-col p-5">
+                <div className="container w-full h-fit mt-5 px-5 flex justify-center items-center mb-5">
+                    <div className="main w-[100%] md:w-[90%] md:h-[400px] bg-white rounded-md shadow-md grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+                        <div className="form-update flex flex-col p-5 min-h-fit">
                             <h1 className="text-2xl font-semibold">Update Profile</h1>
                             <p className="text-slate-600">Update your profile detail</p>
-                            <form className="w-full mt-3 flex flex-col justify-between" onSubmit={(e) => handeSubmit(e)}>
-                                <div className="mb-3 w-full">
-                                    <label htmlFor="firstname" className="text-slate-600 text-sm">Firstname</label>
-                                    <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
-                                        <i className=" bi bi-person-circle"></i>
-                                        <input type="text" name="" id="" className="outline-none w-full" placeholder="Enter Firstname" onChange={(e) => setData({...data, firstname: e.target.value})} />
+                            <form className="w-full mt-3 grid grid-cols-2 gap-2" onSubmit={(e) => handeSubmit(e)}>
+                                <div className="column-1">
+                                    <div className="mb-3 w-full">
+                                        <label htmlFor="firstname" className="text-slate-600 text-sm">Firstname</label>
+                                        <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
+                                            <i className=" bi bi-person-circle"></i>
+                                            <input type="text" name="" id="" className="outline-none w-full text-sm" value={data.firstname} placeholder="Enter Firstname" onChange={(e) => setData({...data, firstname: e.target.value})} />
+                                        </div>
+                                    </div>
+                                    <div className="mb-3 w-full">
+                                        <label htmlFor="lastname" className="text-slate-600 text-sm">Lastname</label>
+                                        <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
+                                            <i className=" bi bi-person-circle"></i>
+                                            <input type="text" name="" id="" className="outline-none w-full text-sm" value={data.lastname} placeholder="Enter lastname" onChange={(e) => setData({...data, lastname: e.target.value})}/>
+                                        </div>
+                                    </div>
+                                    <div className="mb-3 w-full">
+                                        <label htmlFor="username" className="text-slate-600 text-sm">Username</label>
+                                        <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
+                                            <i className=" bi bi-person-circle"></i>
+                                            <input type="text" name="" id="" className="outline-none w-full text-sm" value={data.username} placeholder="Enter username" onChange={(e) => setData({...data, username: e.target.value})}/>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="mb-3 w-full">
-                                    <label htmlFor="lastname" className="text-slate-600 text-sm">Lastname</label>
-                                    <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
-                                        <i className=" bi bi-person-circle"></i>
-                                        <input type="text" name="" id="" className="outline-none w-full" placeholder="Enter lastname" onChange={(e) => setData({...data, lastname: e.target.value})}/>
+                                <div className="column-2">
+                                    <div className="mb-3 w-full">
+                                        <label htmlFor="email" className="text-slate-600 text-sm">Email</label>
+                                        <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
+                                            <i className=" bi bi-envelope"></i>
+                                            <input type="text" name="" id="" className="outline-none w-full text-sm" value={data.email} placeholder="Enter email" onChange={(e) => setData({...data, email: e.target.value})}/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="mb-3 w-full">
-                                    <label htmlFor="username" className="text-slate-600 text-sm">Username</label>
-                                    <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
-                                        <i className=" bi bi-person-circle"></i>
-                                        <input type="text" name="" id="" className="outline-none w-full" placeholder="Enter username" onChange={(e) => setData({...data, username: e.target.value})}/>
-                                    </div>
-                                </div>
-                                <div className="mb-3 w-full">
-                                    <label htmlFor="email" className="text-slate-600 text-sm">Email</label>
-                                    <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
-                                        <i className=" bi bi-envelope"></i>
-                                        <input type="text" name="" id="" className="outline-none w-full" placeholder="Enter email" onChange={(e) => setData({...data, email: e.target.value})}/>
-                                    </div>
-                                </div>
-                                <div className="mb-3 w-full">
-                                    <label htmlFor="Telephone" className="text-slate-600 text-sm">Telephone</label>
-                                    <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
-                                        <i className=" bi bi-telephone"></i>
-                                        <input type="text" name="" id="" className="outline-none w-full" placeholder="Enter Telephone" onChange={(e) => setData({...data, telephone: e.target.value})}/>
+                                    <div className="mb-3 w-full">
+                                        <label htmlFor="Telephone" className="text-slate-600 text-sm">Telephone</label>
+                                        <div className="w-full flex flex-row border rounded-md gap-2 p-2 border-gray-300">
+                                            <i className=" bi bi-telephone"></i>
+                                            <input type="text" name="" id="" className="outline-none w-full text-sm" value={data.telephone} placeholder="Enter Telephone" onChange={(e) => setData({...data, telephone: e.target.value})}/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="action flex flex-row gap-2 mt-2">

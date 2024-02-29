@@ -58,6 +58,10 @@
         opacity: 1;
       }
     }
+
+    .slider::-webkit-scrollbar{
+      width: 0;
+    }
     /* .btn{
       position: relative;
       overflow: hidden;
@@ -75,6 +79,36 @@
       top: 0;
       opacity: 0;
     } */
+
+    .slide-hidden {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.slide-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.floating-x{
+  display: block;
+  animation: floatingX 0.8s ease-in-out infinite;
+}
+
+@keyframes floatingX {
+  0%{
+    transform: translate(0px, 0px);
+  }
+  50%{
+    transform: translate(10px, 0px);
+  }
+  100%{
+    transform: translate(0px, 0px);
+  }
+}
+
   </style>
   <body>
     <div id="root"></div>

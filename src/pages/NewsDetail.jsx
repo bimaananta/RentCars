@@ -53,7 +53,7 @@ export default function NewsDetail(){
                             <p className="text-sm lg:text-lg text-slate-600">{`News / ${(category) ? category.name : ""}`}</p>
                             <h1 className="text-2xl lg:text-3xl font-bold">{news.title}</h1>
                             <p className="text-sm lg:text-base text-slate-600 mb-2">{news.description}</p>
-                            <p className="text-sm mb-3">By : Bima Ananta</p>
+                            <p className="text-sm mb-3">By : {`${(news.user) ? news.user.firstname + " " + news.user.lastname : ""}`}</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod, animi omnis distinctio laboriosam eaque obcaecati culpa! Hic nobis fugit suscipit tempore assumenda quos dolore voluptatem, minus sed perspiciatis quas.</p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ export default function NewsDetail(){
                         <p className="text-slate-600">See another news from RentCars!</p>
                         <div className="main-content mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {newsDatas.map((news, index) => (
-                                <NewsCard newsData={news} key={index} />
+                                <NewsCard newsData={news} key={index} category={news.category.name} />
                             ))}
                         </div>
                     </div>

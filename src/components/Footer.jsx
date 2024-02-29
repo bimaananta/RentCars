@@ -1,7 +1,7 @@
 export default function Footer(){
     return (
         <footer id="footer" className="pt-11">
-            <div className="main w-full h-fit bg-slate-900 text-white p-10 grid grid-cols-2">
+            <div className="main w-full h-fit bg-slate-900 text-white p-10 grid grid-cols-4">
                 <div className="col flex flex-col">
                     <h1 className="font-medium">Follow Us</h1>
                     <div className="w-[80px] h-[2px] bg-yellow-500 mb-3"></div>
@@ -17,9 +17,15 @@ export default function Footer(){
                     <div className="w-[80px] h-[2px] bg-yellow-500 mb-3"></div>
                     <ul className="flex flex-col text-white list-inside" itemType="circle">
                         <li className="text-sm">Rental</li>
-                        <li className="text-sm">Customer Sevice</li>
-                        <li className="text-sm">Car Arrive</li>
-                        <li className="text-sm">Advertise</li>
+                        <li className="text-sm">Cars</li>
+                        <li className="text-sm">List</li>
+                    </ul>
+                </div>
+                <div className="col flex flex-col">
+                    <h1 className="font-medium">News</h1>
+                    <div className="w-[80px] h-[2px] bg-yellow-500 mb-3"></div>
+                    <ul className="flex flex-col text-white list-inside" itemType="circle">
+                        <li className="text-sm">News</li>
                     </ul>
                 </div>
             </div>

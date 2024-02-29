@@ -39,9 +39,9 @@ export default function News(){
                             <button className="w-[40px] h-[40px] rounded-md bg-blue-600 text-white transition-all hover:opacity-90"><i className="bi bi-search" onClick={(e) => handleSearch(e)}></i></button>
                         </div>
                     </div>
-                    <div className="main w-full h-fit p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="main w-full h-fit p-10 grid grid-cols-1 md:grid-cols-2 gap-5">
                         {newsData.map((news, index) => (
-                            <NewsCard newsData={news} key={index} />
+                            <NewsCard newsData={news} key={index} category={news.category.name} />
                         ))}
                     </div>  
                 </div>
